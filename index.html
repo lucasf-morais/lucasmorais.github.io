@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lucas Fabricio Morais — Suporte de TI</title>
+<style>
+  :root {
+    --bg: #10151b;
+    --panel: #161d25;
+    --line: #26313d;
+    --text: #e7edf3;
+    --muted: #8fa1b3;
+    --accent: #4fd1ae;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.6;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 32px; }
+  header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 22px 0; border-bottom: 1px solid var(--line);
+  }
+  header .name { font-weight: 600; font-size: 15px; letter-spacing: 0.2px; }
+  nav { display: flex; gap: 26px; font-size: 13px; color: var(--muted); }
+  nav a { color: inherit; text-decoration: none; }
+  nav a:hover, nav a:focus-visible { color: var(--text); }
+
+  .hero { padding: 88px 0 72px; border-bottom: 1px solid var(--line); text-align: center; }
+  .hero .tag { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 13px; color: var(--accent); margin-bottom: 16px; }
+  .hero h1 { font-size: 42px; line-height: 1.2; font-weight: 600; margin: 0 auto 20px; max-width: 22ch; }
+  .hero p { color: var(--muted); max-width: 60ch; font-size: 17px; margin: 0 auto; }
+
+  section { padding: 60px 0; border-bottom: 1px solid var(--line); }
+  section h2 { font-size: 13px; color: var(--muted); font-weight: 600; margin: 0 0 28px; text-align: center; }
+
+  .skills, .projects {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 16px;
+  }
+  .skill, .project {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 22px 24px;
+    background: var(--panel);
+    height: 100%;
+  }
+  .skill b, .project .ptitle { display: block; font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+  .skill span, .project .pdesc { display: block; color: var(--muted); font-size: 14px; margin: 0; }
+
+  footer { padding: 52px 0 64px; text-align: center; }
+  footer .contact { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 15px; }
+  footer .contact a { color: var(--accent); text-decoration: none; }
+  footer .contact a:hover, footer .contact a:focus-visible { text-decoration: underline; }
+
+  @media (max-width: 720px) {
+    .wrap { padding: 0 20px; }
+    .hero { padding: 64px 0 52px; }
+    .hero h1 { font-size: 29px; }
+    .hero p { font-size: 16px; }
+    .skills, .projects { grid-template-columns: 1fr; grid-auto-rows: auto; }
+    nav { gap: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="name">Lucas Fabricio Morais</div>
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <div class="hero" id="sobre">
+    <div class="tag">suporte de TI · infraestrutura · redes</div>
+    <h1>Mantenho ambientes de TI corporativos estáveis e funcionando.</h1>
+    <p>Experiência prática em implantação, configuração, manutenção e resolução de problemas em redes e infraestrutura corporativa, do primeiro atendimento à causa raiz.</p>
+  </div>
+
+  <section id="habilidades">
+    <h2>Habilidades</h2>
+    <div class="skills">
+      <div class="skill"><b>Redes</b><span>Configuração, cabeamento estruturado, switches e roteadores</span></div>
+      <div class="skill"><b>Servidores</b><span>Instalação, manutenção e monitoramento</span></div>
+      <div class="skill"><b>Suporte técnico</b><span>Diagnóstico e resolução de incidentes</span></div>
+      <div class="skill"><b>Sistemas</b><span>Windows e Linux em ambiente corporativo</span></div>
+    </div>
+  </section>
+
+  <section id="projetos">
+    <h2>Projetos e experiências</h2>
+    <div class="projects">
+      <div class="project">
+        <div class="ptitle">Implantação de rede corporativa</div>
+        <p class="pdesc">Estruturação e configuração de rede para ambiente com múltiplos setores, incluindo cabeamento e segmentação.</p>
+      </div>
+      <div class="project">
+        <div class="ptitle">Manutenção de servidores</div>
+        <p class="pdesc">Monitoramento contínuo e resolução de falhas em servidores de produção, reduzindo tempo de indisponibilidade.</p>
+      </div>
+      <div class="project">
+        <div class="ptitle">Suporte técnico a usuários</div>
+        <p class="pdesc">Atendimento e diagnóstico de problemas de hardware, software e rede em ambiente corporativo.</p>
+      </div>
+      <div class="project">
+        <div class="ptitle">Administração de sistemas</div>
+        <p class="pdesc">Configuração, atualização e manutenção de estações e servidores Windows e Linux em ambiente corporativo.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contato">
+    <div class="contact"><a href="mailto:contato@lucasmorais.com.br">contato@lucasmorais.com.br</a></div>
+  </footer>
+
+</div>
+</body>
+</html>
