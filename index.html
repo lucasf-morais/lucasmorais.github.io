@@ -3,18 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
 <title>Lucas Fabricio Morais — Suporte de TI</title>
+<meta name="description" content="Lucas Fabricio Morais — suporte de TI, infraestrutura e redes. Experiência prática em atendimento, cabeamento, configuração de redes e servidores.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lucas Fabricio Morais — Suporte de TI">
+<meta property="og:description" content="Suporte de TI, infraestrutura e redes. Do primeiro atendimento à causa raiz.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2310151b'/%3E%3Ctext x='10' y='44' font-family='monospace' font-size='34' font-weight='700' fill='%234fd1ae'%3E%3E_%3C/text%3E%3C/svg%3E">
 <style>
   :root {
     --bg: #10151b;
     --panel: #161d25;
     --line: #26313d;
+    --line-strong: #3a4857;
     --text: #e7edf3;
     --muted: #8fa1b3;
     --accent: #4fd1ae;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   }
   * { box-sizing: border-box; }
-  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
   body {
     margin: 0;
     background: var(--bg);
@@ -24,9 +32,16 @@
     padding-top: env(safe-area-inset-top, 0px);
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
-  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 32px; }
+  a:focus-visible, summary:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 32px; }
+
+  /* Cabeçalho */
   header {
-    display: flex; justify-content: space-between; align-items: center;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
     padding: 22px 0; border-bottom: 1px solid var(--line);
   }
   header .name { font-weight: 600; font-size: 15px; letter-spacing: 0.2px; }
@@ -34,42 +49,123 @@
   nav a { color: inherit; text-decoration: none; }
   nav a:hover, nav a:focus-visible { color: var(--text); }
 
+  /* Hero */
   .hero { padding: 88px 0 72px; border-bottom: 1px solid var(--line); text-align: center; }
-  .hero .tag { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 13px; color: var(--accent); margin-bottom: 16px; }
+  .tag {
+    font-family: var(--mono); font-size: 14px; color: var(--accent);
+    margin-bottom: 18px; white-space: nowrap;
+  }
+  .typed {
+    display: inline-block; overflow: hidden; white-space: nowrap;
+    vertical-align: bottom; width: 38ch;
+    animation: typing 2.2s steps(38, end) 0.4s both;
+  }
+  .cursor {
+    display: inline-block; width: 0.6ch; height: 1.1em; margin-left: 2px;
+    background: var(--accent); vertical-align: text-bottom;
+    animation: blink 1.1s steps(1) infinite;
+  }
   .hero h1 { font-size: 42px; line-height: 1.2; font-weight: 600; margin: 0 auto 20px; max-width: 22ch; }
   .hero p { color: var(--muted); max-width: 60ch; font-size: 17px; margin: 0 auto; }
 
+  /* Seções */
   section { padding: 60px 0; border-bottom: 1px solid var(--line); }
-  section h2 { font-size: 13px; color: var(--muted); font-weight: 600; margin: 0 0 28px; text-align: center; }
-
-  .skills, .projects {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 1fr;
-    gap: 16px;
+  .section-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 16px; margin-bottom: 24px;
   }
-  .skill, .project {
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 22px 24px;
-    background: var(--panel);
-    height: 100%;
+  section h2 { font-size: 14px; color: var(--muted); font-weight: 600; margin: 0; font-family: var(--mono); }
+  section h2::before { content: "> "; color: var(--accent); }
+  .toggle-all {
+    display: none; background: none; border: 0; padding: 4px 0;
+    font-family: var(--mono); font-size: 13px; color: var(--muted); cursor: pointer;
   }
-  .skill b, .project .ptitle { display: block; font-size: 15px; font-weight: 600; margin-bottom: 6px; }
-  .skill span, .project .pdesc { display: block; color: var(--muted); font-size: 14px; margin: 0; }
+  .toggle-all:hover { color: var(--accent); }
 
-  footer { padding: 52px 0 64px; text-align: center; }
-  footer .contact { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 15px; }
-  footer .contact a { color: var(--accent); text-decoration: none; }
-  footer .contact a:hover, footer .contact a:focus-visible { text-decoration: underline; }
+  /* Habilidades expansíveis */
+  .skills { display: flex; flex-direction: column; gap: 12px; }
+  details.skill {
+    border: 1px solid var(--line); border-radius: 6px; background: var(--panel);
+  }
+  details.skill[open] { border-color: var(--line-strong); }
+  details.skill summary {
+    list-style: none; cursor: pointer; padding: 20px 24px;
+  }
+  details.skill summary::-webkit-details-marker { display: none; }
+  details.skill summary::marker { content: ""; }
+  .row { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .skill-name { font-size: 16px; font-weight: 600; }
+  .skill-name::before { content: ">"; color: var(--accent); font-family: var(--mono); margin-right: 10px; }
+  .state { font-family: var(--mono); font-size: 13px; color: var(--muted); white-space: pre; }
+  .state::after { content: "[ + ]"; }
+  details[open] .state::after { content: "[ − ]"; }
+  details.skill summary:hover .state { color: var(--accent); }
+  .resume { display: block; color: var(--muted); font-size: 14px; margin: 6px 0 0 22px; }
+
+  .tree { list-style: none; margin: 0; padding: 0 24px 22px 46px; }
+  .tree li {
+    position: relative; padding: 3px 0 3px 26px; font-size: 14px; color: var(--text);
+  }
+  .tree li::before {
+    content: ""; position: absolute; left: 4px; top: 0; bottom: 0;
+    border-left: 1px solid var(--line-strong);
+  }
+  .tree li::after {
+    content: ""; position: absolute; left: 4px; top: 0.95em; width: 14px;
+    border-top: 1px solid var(--line-strong);
+  }
+  .tree li:last-child::before { bottom: auto; height: 0.95em; }
+  .tree .wip { color: var(--muted); }
+
+  /* Projetos */
+  .projects {
+    display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 1fr; gap: 16px;
+  }
+  .project {
+    border: 1px solid var(--line); border-radius: 6px; padding: 22px 24px;
+    background: var(--panel); height: 100%;
+  }
+  .ptitle { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .ptitle::before { content: ">"; color: var(--accent); font-family: var(--mono); margin-right: 10px; }
+  .pdesc { color: var(--muted); font-size: 14px; margin: 0 0 0 22px; }
+
+  /* Contato */
+  footer { padding: 56px 0 72px; text-align: center; }
+  footer h2 { font-size: 14px; color: var(--muted); font-weight: 600; margin: 0 0 22px; font-family: var(--mono); }
+  footer h2::before { content: "> "; color: var(--accent); }
+  .dots::after { content: "..."; display: inline-block; width: 3ch; text-align: left; animation: dots 1.6s steps(1) infinite; }
+  .contact { font-family: var(--mono); font-size: 15px; display: flex; flex-direction: column; gap: 8px; align-items: center; }
+  .contact a { color: var(--accent); text-decoration: none; }
+  .contact a:hover, .contact a:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
+  .contact .links { display: flex; gap: 22px; flex-wrap: wrap; justify-content: center; font-size: 14px; }
+
+  @keyframes typing { from { width: 0; } to { width: 38ch; } }
+  @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+  @keyframes dots {
+    0%   { content: "."; }
+    33%  { content: ".."; }
+    66%  { content: "..."; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .typed, .cursor, .dots::after { animation: none; }
+  }
 
   @media (max-width: 720px) {
     .wrap { padding: 0 20px; }
+    header { flex-direction: column; align-items: flex-start; gap: 10px; }
     .hero { padding: 64px 0 52px; }
     .hero h1 { font-size: 29px; }
     .hero p { font-size: 16px; }
-    .skills, .projects { grid-template-columns: 1fr; grid-auto-rows: auto; }
-    nav { gap: 14px; }
+    .projects { grid-template-columns: 1fr; grid-auto-rows: auto; }
+    details.skill summary { padding: 18px 18px; }
+    .tree { padding: 0 18px 20px 40px; }
+    .resume { margin-left: 22px; }
+  }
+  @media (max-width: 400px) {
+    .tag { font-size: 11px; }
+    nav { gap: 16px; }
   }
 </style>
 </head>
@@ -87,23 +183,78 @@
   </header>
 
   <div class="hero" id="sobre">
-    <div class="tag">suporte de TI · infraestrutura · redes</div>
+    <div class="tag"><span aria-hidden="true">&gt; </span><span class="typed">suporte de TI · infraestrutura · redes</span><span class="cursor" aria-hidden="true"></span></div>
     <h1>Mantenho ambientes de TI corporativos estáveis e funcionando.</h1>
     <p>Experiência prática em implantação, configuração, manutenção e resolução de problemas em redes e infraestrutura corporativa, do primeiro atendimento à causa raiz.</p>
   </div>
 
   <section id="habilidades">
-    <h2>Habilidades</h2>
+    <div class="section-head">
+      <h2>Habilidades</h2>
+      <button type="button" class="toggle-all" id="toggleAll">expandir tudo</button>
+    </div>
     <div class="skills">
-      <div class="skill"><b>Redes</b><span>Configuração, cabeamento estruturado, switches e roteadores</span></div>
-      <div class="skill"><b>Servidores</b><span>Instalação, manutenção e monitoramento</span></div>
-      <div class="skill"><b>Suporte técnico</b><span>Diagnóstico e resolução de incidentes</span></div>
-      <div class="skill"><b>Sistemas</b><span>Windows e Linux em ambiente corporativo</span></div>
+
+      <details class="skill" open>
+        <summary>
+          <span class="row"><span class="skill-name">Suporte técnico</span><span class="state" aria-hidden="true"></span></span>
+          <span class="resume">Atendimento e diagnóstico de problemas de hardware, software e conectividade.</span>
+        </summary>
+        <ul class="tree">
+          <li>Atendimento a usuários com diferentes níveis de conhecimento técnico</li>
+          <li>Diagnóstico de hardware, software e rede</li>
+          <li>Instalação e configuração de sistemas e aplicações</li>
+          <li>Orientação e resolução de incidentes</li>
+        </ul>
+      </details>
+
+      <details class="skill">
+        <summary>
+          <span class="row"><span class="skill-name">Redes e infraestrutura</span><span class="state" aria-hidden="true"></span></span>
+          <span class="resume">Montagem, configuração e manutenção da estrutura física e lógica da rede.</span>
+        </summary>
+        <ul class="tree">
+          <li>Planejamento, montagem e manutenção de racks</li>
+          <li>Cabeamento estruturado</li>
+          <li>Configuração de switches e roteadores</li>
+          <li>Access points e redes sem fio</li>
+          <li>TCP/IP</li>
+          <li>MikroTik</li>
+        </ul>
+      </details>
+
+      <details class="skill">
+        <summary>
+          <span class="row"><span class="skill-name">Sistemas</span><span class="state" aria-hidden="true"></span></span>
+          <span class="resume">Instalação e configuração de sistemas operacionais e equipamentos.</span>
+        </summary>
+        <ul class="tree">
+          <li>Windows</li>
+          <li class="wip">Linux (em desenvolvimento)</li>
+          <li>Instalação de sistemas e aplicações</li>
+          <li>Configuração de equipamentos e periféricos</li>
+        </ul>
+      </details>
+
+      <details class="skill">
+        <summary>
+          <span class="row"><span class="skill-name">Servidores e virtualização</span><span class="state" aria-hidden="true"></span></span>
+          <span class="resume">Instalação, configuração e manutenção de servidores e serviços de rede.</span>
+        </summary>
+        <ul class="tree">
+          <li>Instalação e configuração</li>
+          <li>Serviços de rede</li>
+          <li>Backup</li>
+          <li>Proxmox</li>
+          <li class="wip">Linux (em desenvolvimento)</li>
+        </ul>
+      </details>
+
     </div>
   </section>
 
   <section id="projetos">
-    <h2>Projetos e experiências</h2>
+    <div class="section-head"><h2>Projetos e experiências</h2></div>
     <div class="projects">
       <div class="project">
         <div class="ptitle">Implantação de rede corporativa</div>
@@ -119,15 +270,42 @@
       </div>
       <div class="project">
         <div class="ptitle">Administração de sistemas</div>
-        <p class="pdesc">Configuração, atualização e manutenção de estações e servidores Windows e Linux em ambiente corporativo.</p>
+        <p class="pdesc">Configuração, atualização e manutenção de estações e servidores em ambiente corporativo.</p>
       </div>
     </div>
   </section>
 
   <footer id="contato">
-    <div class="contact"><a href="mailto:contato@lucasmorais.com.br">contato@lucasmorais.com.br</a></div>
+    <h2>Contato<span class="dots" aria-hidden="true"></span></h2>
+    <div class="contact">
+      <a href="mailto:contato@lucasmorais.com.br">contato@lucasmorais.com.br</a>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/lucas-fabricio-morais/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/lucasf-morais/lucasmorais.github.io" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
   </footer>
 
 </div>
+
+<script>
+  (function () {
+    var btn = document.getElementById('toggleAll');
+    var items = document.querySelectorAll('details.skill');
+    if (!btn || !items.length) return;
+    btn.style.display = 'inline-block';
+    function allOpen() {
+      return Array.prototype.every.call(items, function (d) { return d.open; });
+    }
+    function sync() { btn.textContent = allOpen() ? 'recolher tudo' : 'expandir tudo'; }
+    btn.addEventListener('click', function () {
+      var open = !allOpen();
+      Array.prototype.forEach.call(items, function (d) { d.open = open; });
+      sync();
+    });
+    Array.prototype.forEach.call(items, function (d) { d.addEventListener('toggle', sync); });
+    sync();
+  })();
+</script>
 </body>
 </html>
