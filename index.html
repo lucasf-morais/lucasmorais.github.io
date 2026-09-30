@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="dark">
 <title>Lucas Fabricio Morais — Suporte de TI</title>
-<meta name="description" content="Lucas Fabricio Morais — suporte de TI, infraestrutura e redes. Experiência prática em atendimento, cabeamento, configuração de redes e servidores.">
+<meta name="description" content="Lucas Fabricio Morais — Suporte de TI, infraestrutura e redes. Experiência prática em ambiente corporativo.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Lucas Fabricio Morais — Suporte de TI">
-<meta property="og:description" content="Suporte de TI, infraestrutura e redes. Do primeiro atendimento à causa raiz.">
+<meta property="og:description" content="Suporte de TI, infraestrutura e redes. Experiência prática em ambiente corporativo.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2310151b'/%3E%3Ctext x='10' y='44' font-family='monospace' font-size='34' font-weight='700' fill='%234fd1ae'%3E%3E_%3C/text%3E%3C/svg%3E">
 <style>
   :root {
@@ -124,10 +124,17 @@
   .project {
     border: 1px solid var(--line); border-radius: 6px; padding: 22px 24px;
     background: var(--panel); height: 100%;
+    display: flex; flex-direction: column;
   }
   .ptitle { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
   .ptitle::before { content: ">"; color: var(--accent); font-family: var(--mono); margin-right: 10px; }
-  .pdesc { color: var(--muted); font-size: 14px; margin: 0 0 0 22px; }
+  .pdesc { color: var(--muted); font-size: 14px; margin: 0 0 14px 22px; }
+  .pmeta {
+    margin: auto 0 0 22px; padding-top: 10px;
+    border-top: 1px dashed var(--line-strong);
+    font-family: var(--mono); font-size: 12.5px; line-height: 1.5;
+    color: #6fb8a3;
+  }
 
   /* Contato */
   footer { padding: 56px 0 72px; text-align: center; }
@@ -139,6 +146,25 @@
   .contact a:hover, .contact a:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
   .contact .links { display: flex; gap: 22px; flex-wrap: wrap; justify-content: center; font-size: 14px; }
 
+
+  /* Animações de texto */
+  details[open] .tree li {
+    animation: itemIn 0.4s ease-out both;
+    animation-delay: calc(var(--i, 0) * 70ms);
+  }
+  .tree li:nth-child(1) { --i: 0; }
+  .tree li:nth-child(2) { --i: 1; }
+  .tree li:nth-child(3) { --i: 2; }
+  .tree li:nth-child(4) { --i: 3; }
+  .tree li:nth-child(5) { --i: 4; }
+  .tree li:nth-child(6) { --i: 5; }
+  .tree li:nth-child(7) { --i: 6; }
+  .tree li:nth-child(8) { --i: 7; }
+  .tt { display: inline-block; overflow: hidden; white-space: nowrap; vertical-align: bottom; }
+  .tt.pending { width: 0; }
+  .tt.play { animation: typeTitle 0.7s steps(var(--n)) both; }
+  @keyframes itemIn { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: none; } }
+  @keyframes typeTitle { from { width: 0; } to { width: calc(var(--n) * 1ch); } }
   @keyframes typing { from { width: 0; } to { width: 38ch; } }
   @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
   @keyframes dots {
@@ -150,6 +176,7 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .typed, .cursor, .dots::after { animation: none; }
+    details[open] .tree li, .tt.play { animation: none; }
   }
 
   @media (max-width: 720px) {
@@ -184,69 +211,69 @@
 
   <div class="hero" id="sobre">
     <div class="tag"><span aria-hidden="true">&gt; </span><span class="typed">suporte de TI · infraestrutura · redes</span><span class="cursor" aria-hidden="true"></span></div>
-    <h1>Mantenho ambientes de TI corporativos estáveis e funcionando.</h1>
-    <p>Experiência prática em implantação, configuração, manutenção e resolução de problemas em redes e infraestrutura corporativa, do primeiro atendimento à causa raiz.</p>
+    <h1>Suporte de TI com foco em redes e infraestrutura corporativa.</h1>
+    <p>Experiência em atendimento a usuários, configuração e manutenção de redes e equipamentos em ambiente corporativo, do primeiro atendimento à identificação da causa.</p>
   </div>
 
   <section id="habilidades">
     <div class="section-head">
-      <h2>Habilidades</h2>
+      <h2><span class="tt">Habilidades</span></h2>
       <button type="button" class="toggle-all" id="toggleAll">expandir tudo</button>
     </div>
     <div class="skills">
-
       <details class="skill" open>
         <summary>
           <span class="row"><span class="skill-name">Suporte técnico</span><span class="state" aria-hidden="true"></span></span>
           <span class="resume">Atendimento e diagnóstico de problemas de hardware, software e conectividade.</span>
         </summary>
         <ul class="tree">
-          <li>Atendimento a usuários com diferentes níveis de conhecimento técnico</li>
+          <li>Atendimento a usuários e resolução de incidentes</li>
+          <li>Orientação técnica adaptada ao nível de conhecimento do usuário, com instruções e materiais de apoio quando necessário</li>
+          <li>Suporte remoto a usuários de diferentes unidades</li>
           <li>Diagnóstico de hardware, software e rede</li>
-          <li>Instalação e configuração de sistemas e aplicações</li>
-          <li>Orientação e resolução de incidentes</li>
+          <li>Montagem, manutenção e configuração de computadores e notebooks</li>
+          <li>Instalação e suporte de impressoras, monitores e outros periféricos</li>
+          <li>Administração de contas, e-mail, acessos e licenças</li>
         </ul>
       </details>
 
       <details class="skill">
         <summary>
           <span class="row"><span class="skill-name">Redes e infraestrutura</span><span class="state" aria-hidden="true"></span></span>
-          <span class="resume">Montagem, configuração e manutenção da estrutura física e lógica da rede.</span>
+          <span class="resume">Experiência e conhecimento em estrutura física e lógica da rede e conectividade.</span>
         </summary>
         <ul class="tree">
-          <li>Planejamento, montagem e manutenção de racks</li>
-          <li>Cabeamento estruturado</li>
-          <li>Configuração de switches e roteadores</li>
-          <li>Access points e redes sem fio</li>
-          <li>TCP/IP</li>
-          <li>MikroTik</li>
+          <li>Organização, montagem e manutenção de racks</li>
+          <li>Cabeamento estruturado, com aplicação de normas, teste, identificação e documentação dos pontos</li>
+          <li>Configuração de roteadores e switches</li>
+          <li>Configuração de redes Wi-Fi e access points</li>
+          <li>Instalação e organização de sistemas de CFTV</li>
         </ul>
       </details>
 
       <details class="skill">
         <summary>
           <span class="row"><span class="skill-name">Sistemas</span><span class="state" aria-hidden="true"></span></span>
-          <span class="resume">Instalação e configuração de sistemas operacionais e equipamentos.</span>
+          <span class="resume">Conhecimento em sistemas operacionais em ambiente corporativo, aplicações e equipamentos.</span>
         </summary>
         <ul class="tree">
-          <li>Windows</li>
+          <li>Windows 10/11</li>
+          <li>Instalação e configuração de sistemas e aplicações</li>
+          <li>Atualização e manutenção de sistemas</li>
           <li class="wip">Linux (em desenvolvimento)</li>
-          <li>Instalação de sistemas e aplicações</li>
-          <li>Configuração de equipamentos e periféricos</li>
         </ul>
       </details>
 
       <details class="skill">
         <summary>
-          <span class="row"><span class="skill-name">Servidores e virtualização</span><span class="state" aria-hidden="true"></span></span>
-          <span class="resume">Instalação, configuração e manutenção de servidores e serviços de rede.</span>
+          <span class="row"><span class="skill-name">Servidores</span><span class="state" aria-hidden="true"></span></span>
+          <span class="resume">Servidores Windows, serviços de rede e rotinas de backup.</span>
         </summary>
         <ul class="tree">
-          <li>Instalação e configuração</li>
+          <li>Windows Server e Active Directory</li>
+          <li>Instalação e configuração de servidores</li>
           <li>Serviços de rede</li>
           <li>Backup</li>
-          <li>Proxmox</li>
-          <li class="wip">Linux (em desenvolvimento)</li>
         </ul>
       </details>
 
@@ -254,34 +281,38 @@
   </section>
 
   <section id="projetos">
-    <div class="section-head"><h2>Projetos e experiências</h2></div>
+    <div class="section-head"><h2><span class="tt">Projetos e experiências</span></h2></div>
     <div class="projects">
       <div class="project">
-        <div class="ptitle">Implantação de rede corporativa</div>
-        <p class="pdesc">Estruturação e configuração de rede para ambiente com múltiplos setores, incluindo cabeamento e segmentação.</p>
+        <div class="ptitle">Ampliação e novas unidades</div>
+        <p class="pdesc">Participação na ampliação e reforma de escritórios, da estruturação inicial da TI ao preparo dos postos de trabalho.</p>
+        <p class="pmeta">4 novas lojas e 2 ampliações · cerca de 50 pontos de rede por loja</p>
       </div>
       <div class="project">
-        <div class="ptitle">Manutenção de servidores</div>
-        <p class="pdesc">Monitoramento contínuo e resolução de falhas em servidores de produção, reduzindo tempo de indisponibilidade.</p>
+        <div class="ptitle">Expansão de infraestrutura</div>
+        <p class="pdesc">Apoio na reestruturação e expansão de ambientes de TI: racks, equipamentos de rede, conectividade e estações de trabalho.</p>
+        <p class="pmeta">4 racks projetados e implementados · documentação de patch panel, switches e MikroTik</p>
       </div>
       <div class="project">
-        <div class="ptitle">Suporte técnico a usuários</div>
-        <p class="pdesc">Atendimento e diagnóstico de problemas de hardware, software e rede em ambiente corporativo.</p>
+        <div class="ptitle">Atendimento e resolução de incidentes</div>
+        <p class="pdesc">Suporte diário a usuários, com diagnóstico, testes e correção até a solução ou a identificação da causa.</p>
+        <p class="pmeta">Atendimento remoto a 6 lojas · 10 a 15 computadores e 5 a 10 periféricos essenciais para produção por loja</p>
       </div>
       <div class="project">
-        <div class="ptitle">Administração de sistemas</div>
-        <p class="pdesc">Configuração, atualização e manutenção de estações e servidores em ambiente corporativo.</p>
+        <div class="ptitle">Manutenção de sistemas e serviços</div>
+        <p class="pdesc">Apoio na implantação, atualização, backup e manutenção de sistemas, equipamentos e serviços da operação.</p>
+        <p class="pmeta">Rotina de backup e atualização de 6 lojas</p>
       </div>
     </div>
   </section>
 
   <footer id="contato">
-    <h2>Contato<span class="dots" aria-hidden="true"></span></h2>
+    <h2><span class="tt">Contato</span><span class="dots" aria-hidden="true"></span></h2>
     <div class="contact">
       <a href="mailto:contato@lucasmorais.com.br">contato@lucasmorais.com.br</a>
       <div class="links">
         <a href="https://www.linkedin.com/in/lucas-fabricio-morais/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://github.com/lucasf-morais/lucasmorais.github.io" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/lucasf-morais" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
   </footer>
@@ -291,20 +322,49 @@
 <script>
   (function () {
     var btn = document.getElementById('toggleAll');
-    var items = document.querySelectorAll('details.skill');
-    if (!btn || !items.length) return;
-    btn.style.display = 'inline-block';
-    function allOpen() {
-      return Array.prototype.every.call(items, function (d) { return d.open; });
-    }
-    function sync() { btn.textContent = allOpen() ? 'recolher tudo' : 'expandir tudo'; }
-    btn.addEventListener('click', function () {
-      var open = !allOpen();
-      Array.prototype.forEach.call(items, function (d) { d.open = open; });
-      sync();
+    var items = Array.prototype.slice.call(document.querySelectorAll('details.skill'));
+    if (!items.length) return;
+
+    function allOpen() { return items.every(function (d) { return d.open; }); }
+    function sync() { if (btn) btn.textContent = allOpen() ? 'recolher tudo' : 'expandir tudo'; }
+
+    // Ao abrir uma área por clique (ou teclado), fecha as demais
+    items.forEach(function (d) {
+      d.querySelector('summary').addEventListener('click', function () {
+        if (!d.open) items.forEach(function (o) { if (o !== d) o.open = false; });
+      });
+      d.addEventListener('toggle', sync);
     });
-    Array.prototype.forEach.call(items, function (d) { d.addEventListener('toggle', sync); });
-    sync();
+
+    if (btn) {
+      btn.style.display = 'inline-block';
+      btn.addEventListener('click', function () {
+        var open = !allOpen();
+        items.forEach(function (d) { d.open = open; });
+        sync();
+      });
+      sync();
+    }
+  })();
+
+  // Títulos das seções digitados quando aparecem na tela
+  (function () {
+    var titles = document.querySelectorAll('.tt');
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!titles.length || reduce || !('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.remove('pending');
+        e.target.classList.add('play');
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.6 });
+    Array.prototype.forEach.call(titles, function (t) {
+      t.style.setProperty('--n', t.textContent.length);
+      t.classList.add('pending');
+      io.observe(t);
+    });
   })();
 </script>
 </body>
