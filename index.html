@@ -9,454 +9,219 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Lucas Fabricio Morais — Suporte de TI">
 <meta property="og:description" content="Suporte de TI, infraestrutura e redes. Experiência prática em ambiente corporativo.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2310151b'/%3E%3Ctext x='10' y='44' font-family='monospace' font-size='34' font-weight='700' fill='%234fd1ae'%3E%3E_%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23141516'/%3E%3Ctext x='10' y='44' font-family='monospace' font-size='34' font-weight='700' fill='%233ddc6e'%3E%3E_%3C/text%3E%3C/svg%3E">
 <style>
-  :root {
-    --bg: #10151b;
-    --panel: #161d25;
-    --line: #26313d;
-    --line-strong: #3a4857;
-    --text: #e7edf3;
-    --muted: #8fa1b3;
-    --accent: #4fd1ae;
-    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 88px); scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    min-height: 100vh;
-    background-color: var(--bg);
-    background-image: linear-gradient(to top, rgba(31, 143, 119, 0.14), rgba(31, 143, 119, 0) 300px);
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: 100% 300px;
-    color: var(--text);
-    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-    line-height: 1.6;
-    padding-top: env(safe-area-inset-top, 0px);
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-  }
-  a:focus-visible, summary:focus-visible, button:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-    border-radius: 4px;
-  }
-  .wrap { max-width: 960px; margin: 0 auto; padding: 0 32px; }
+:root{--bg:#141516;--panel:#1b1d1f;--line:#2c2f33;--line2:#3d4146;--text:#e8e9ea;--muted:#9a9fa5;--accent:#3ddc6e;--soft:#7ccf95;--amber:#f2a33a;--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+--screws:
+radial-gradient(circle at 14px 50%,transparent 3px,var(--line2) 3.5px,var(--line2) 4.5px,transparent 5px) no-repeat,
+linear-gradient(#6b7077,#6b7077) 12px 13.5px/4px 1px no-repeat,linear-gradient(#6b7077,#6b7077) 13.5px 12px/1px 4px no-repeat,
+radial-gradient(circle at calc(100% - 14px) 50%,transparent 3px,var(--line2) 3.5px,var(--line2) 4.5px,transparent 5px) no-repeat,
+linear-gradient(#6b7077,#6b7077) right 12px top 13.5px/4px 1px no-repeat,linear-gradient(#6b7077,#6b7077) right 13.5px top 12px/1px 4px no-repeat}
+*{box-sizing:border-box}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 80px);scroll-behavior:smooth}
+body{margin:0;min-height:100vh;background-color:var(--bg);background-image:linear-gradient(to top,rgba(31,120,70,.14),rgba(31,120,70,0) 300px);background-repeat:no-repeat;background-position:bottom;background-size:100% 300px;color:var(--text);font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.6;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+a:focus-visible,summary:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:960px;margin:0 auto;padding:0 32px}
+header{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg)}
+header::after{content:"";position:absolute;left:0;bottom:-2.5px;width:5px;height:5px;border-radius:50%;background:var(--accent);box-shadow:0 0 6px rgba(61,220,110,.45);animation:ping 12s ease-in-out infinite alternate}
+header .name{font-weight:600;font-size:15px}
+nav{display:flex;gap:26px;font-size:13px;color:var(--muted)}
+nav a{color:inherit;text-decoration:none;transition:color .2s}
+nav a:hover,nav a:focus-visible,nav a.active{color:var(--accent)}
 
-  /* Cabeçalho */
-  header {
-    display: flex; justify-content: space-between; align-items: center; gap: 16px;
-    padding: 22px 0; border-bottom: 1px solid var(--line);
-    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
-    background: rgba(16, 21, 27, 0.94);
-    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-  }
-  header .name { font-weight: 600; font-size: 15px; letter-spacing: 0.2px; }
-  nav { display: flex; gap: 26px; font-size: 13px; color: var(--muted); }
-  nav a { color: inherit; text-decoration: none; }
-  nav a { transition: color 0.2s ease; }
-  nav a:hover, nav a:focus-visible, nav a.active { color: var(--accent); }
+.hero{padding:88px 0 72px;border-bottom:1px solid var(--line);text-align:center}
+.tag{font-family:var(--mono);font-size:14px;color:var(--accent);margin-bottom:18px;white-space:nowrap}
+.typed{display:inline-block;overflow:hidden;white-space:nowrap;vertical-align:bottom;width:38ch;animation:typing 3s steps(38,end) .4s both}
+.cursor{display:inline-block;width:.75ch;height:2px;margin:0 0 4px 2px;background:var(--accent);vertical-align:bottom;animation:blink 1.3s steps(1) infinite}
+.hero h1{font-size:42px;line-height:1.2;font-weight:600;margin:0 auto 20px;max-width:24ch;text-wrap:balance}
+.hero p{color:var(--muted);max-width:60ch;font-size:17px;margin:0 auto 12px}
 
-  /* Hero */
-  .hero { padding: 88px 0 72px; border-bottom: 1px solid var(--line); text-align: center; }
-  .hero { position: relative; }
-  .hero::before {
-    content: ""; position: absolute; inset: 0; pointer-events: none;
-    background-image:
-      linear-gradient(rgba(143, 161, 179, 0.085) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(143, 161, 179, 0.085) 1px, transparent 1px);
-    background-size: 40px 40px;
-    -webkit-mask-image: radial-gradient(ellipse 80% 90% at 50% 50%, #000 25%, transparent 100%);
-    mask-image: radial-gradient(ellipse 80% 90% at 50% 50%, #000 25%, transparent 100%);
-  }
-  .hero > * { position: relative; }
-  .hero > .net { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-  .net line { stroke: rgba(79, 209, 174, 0.32); stroke-width: 1; }
-  .net circle.node { fill: var(--bg); stroke: rgba(79, 209, 174, 0.6); stroke-width: 1.2; }
-  .hero > .net-s { display: none; }
-  .net-s polyline { fill: none; stroke: rgba(79, 209, 174, 0.32); stroke-width: 1; vector-effect: non-scaling-stroke; }
-  .net-s .dot-o, .net-s .dot-i { stroke-linecap: round; vector-effect: non-scaling-stroke; }
-  .net-s .dot-o { stroke: rgba(79, 209, 174, 0.6); stroke-width: 8; }
-  .net-s .dot-i { stroke: var(--bg); stroke-width: 5.5; }
-  @media (max-width: 959px) {
-    .hero > .net-d { display: none; }
-    .hero > .net-s { display: block; }
-  }
+section{padding:60px 0;border-bottom:1px solid var(--line)}
+.section-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:24px}
+section h2,footer h2{font-size:14px;color:var(--muted);font-weight:600;margin:0;font-family:var(--mono)}
+section h2::before,footer h2::before{content:"> ";color:var(--accent)}
+.tt{display:inline-block;overflow:hidden;white-space:nowrap;vertical-align:bottom}
+.tt.pending{width:0}.tt.play{animation:typeTitle 1.2s steps(var(--n)) both}
+.toggle-all{display:none;background:none;border:0;padding:4px 0;font-family:var(--mono);font-size:13px;color:var(--muted);cursor:pointer}
+.toggle-all:hover{color:var(--accent)}
 
-  /* Pacote de dados indo e voltando na linha sob o topo */
-  .hero::after {
-    content: ""; position: absolute; left: 0; bottom: -3px;
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--accent); box-shadow: 0 0 10px rgba(79, 209, 174, 0.75);
-    animation: ping 9s ease-in-out infinite alternate;
-  }
-  @keyframes ping { from { left: 0; } to { left: calc(100% - 6px); } }
-  .tag {
-    font-family: var(--mono); font-size: 14px; color: var(--accent);
-    margin-bottom: 18px; white-space: nowrap;
-  }
-  .typed {
-    display: inline-block; overflow: hidden; white-space: nowrap;
-    vertical-align: bottom; width: 38ch;
-    animation: typing 3s steps(38, end) 0.4s both;
-  }
-  .cursor {
-    display: inline-block; width: 0.75ch; height: 2px; margin: 0 0 4px 2px;
-    background: var(--accent); vertical-align: bottom;
-    animation: blink 1.3s steps(1) infinite;
-  }
-  .hero h1 { font-size: 42px; line-height: 1.2; font-weight: 600; margin: 0 auto 20px; max-width: 24ch; text-wrap: balance; }
-  .hero p { color: var(--muted); max-width: 60ch; font-size: 17px; margin: 0 auto; }
+/* Cards com parafusos */
+details.skill,.project{position:relative;border:1px solid var(--line);background:var(--panel);border-radius:6px}
+details.skill::before,details.skill::after,.project::before,.project::after{content:"";position:absolute;left:0;right:0;height:28px;pointer-events:none;background:var(--screws)}
+details.skill::before,.project::before{top:0}
+details.skill::after,.project::after{bottom:0}
+details.skill+details.skill{margin-top:12px}
+details.skill[open]{border-color:var(--line2)}
+details.skill summary{display:block;cursor:pointer;list-style:none;padding:20px 32px}
+details.skill summary::-webkit-details-marker{display:none}
+.row{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.skill-name{font-size:16px;font-weight:600}
+.skill-name::before{content:">";color:var(--accent);font-family:var(--mono);margin-right:10px;display:inline-block;transition:transform .28s}
+details.skill summary:hover .skill-name::before,details.skill summary:focus-visible .skill-name::before{transform:translateX(4px)}
+.right{display:flex;align-items:center}
+.leds{display:flex;gap:5px;margin-right:12px}
+.leds i{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 2px rgba(61,220,110,.18),0 0 6px rgba(61,220,110,.55)}
+.leds i:nth-child(1){animation:dim 7s infinite}.leds i:nth-child(2){animation:dim 11s -4s infinite}.leds i:nth-child(3){animation:amb 17s infinite}.leds i:nth-child(4){animation:dim 13s -8s infinite}
+details.skill:nth-of-type(2) .leds i:nth-child(3){animation-duration:19s;animation-delay:-6s}
+details.skill:nth-of-type(3) .leds i:nth-child(3){animation-duration:16s;animation-delay:-11s}
+details.skill:nth-of-type(4) .leds i:nth-child(3){animation-duration:20s;animation-delay:-14s}
+details.skill:nth-of-type(2) .leds i:nth-child(1){animation-delay:-3s}details.skill:nth-of-type(3) .leds i:nth-child(2){animation-delay:-9s}details.skill:nth-of-type(4) .leds i:nth-child(4){animation-delay:-2s}
+.state{font-family:var(--mono);font-size:13px;color:var(--muted);white-space:pre}
+.state::after{content:"[ + ]"}details[open] .state::after{content:"[ − ]"}
+details.skill summary:hover .state{color:var(--accent)}
+.resume{display:block;color:var(--muted);font-size:14px;margin:6px 0 0 22px}
+.tree{list-style:none;margin:0;padding:0 32px 26px 54px}
+.tree li{position:relative;padding:3px 0 3px 26px;font-size:14px}
+.tree li::before{content:"";position:absolute;left:4px;top:0;bottom:0;border-left:1px solid var(--line2)}
+.tree li::after{content:"";position:absolute;left:4px;top:.95em;width:14px;border-top:1px solid var(--line2)}
+.tree li:last-child::before{bottom:auto;height:.95em}
+.amb{font-family:var(--mono);font-size:12px;color:var(--amber);margin-left:8px}
+.amb::before{content:"";display:inline-block;width:6px;height:6px;margin-right:7px;border-radius:50%;background:var(--amber);box-shadow:0 0 6px rgba(242,163,58,.7);animation:act 2.8s steps(1) infinite}
+.wf{width:14px;height:11px;margin-left:8px;color:var(--muted);vertical-align:-1px}
+details[open] .tree li{animation:itemIn .4s ease-out both;animation-delay:calc(var(--i,0)*70ms)}
+.tree li:nth-child(2){--i:1}.tree li:nth-child(3){--i:2}.tree li:nth-child(4){--i:3}.tree li:nth-child(5){--i:4}.tree li:nth-child(6){--i:5}.tree li:nth-child(7){--i:6}
 
-  /* Seções */
-  section { padding: 60px 0; border-bottom: 1px solid var(--line); }
-  .section-head {
-    display: flex; justify-content: space-between; align-items: baseline;
-    gap: 16px; margin-bottom: 24px;
-  }
-  section h2 { font-size: 14px; color: var(--muted); font-weight: 600; margin: 0; font-family: var(--mono); }
-  section h2::before { content: "> "; color: var(--accent); }
-  .toggle-all {
-    display: none; background: none; border: 0; padding: 4px 0;
-    font-family: var(--mono); font-size: 13px; color: var(--muted); cursor: pointer;
-  }
-  .toggle-all:hover { color: var(--accent); }
+/* Projetos */
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.project{display:flex;flex-direction:column;padding:26px 32px}
+.ptitle{font-size:16px;font-weight:600;margin-bottom:6px}
+.ptitle::before{content:">";color:var(--accent);font-family:var(--mono);margin-right:10px}
+.pdesc{color:var(--muted);font-size:14px;margin:0 0 0 22px}
+.project .pdesc{margin-bottom:12px}
 
-  /* Habilidades expansíveis */
-  .skills { display: flex; flex-direction: column; gap: 12px; }
-  details.skill {
-    border: 1px solid var(--line); border-radius: 6px; background: var(--panel);
-  }
-  details.skill[open] { border-color: var(--line-strong); }
-  details.skill summary {
-    list-style: none; cursor: pointer; padding: 20px 24px;
-  }
-  details.skill summary::-webkit-details-marker { display: none; }
-  details.skill summary::marker { content: ""; }
-  .row { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-  .skill-name { font-size: 16px; font-weight: 600; }
-  .skill-name::before { content: ">"; color: var(--accent); font-family: var(--mono); margin-right: 10px; display: inline-block; transition: transform 0.28s ease; }
-  details.skill summary:hover .skill-name::before,
-  details.skill summary:focus-visible .skill-name::before { transform: translateX(4px); }
-  .state { font-family: var(--mono); font-size: 13px; color: var(--muted); white-space: pre; }
-  .state::after { content: "[ + ]"; }
-  details[open] .state::after { content: "[ − ]"; }
-  details.skill summary:hover .state { color: var(--accent); }
-  .resume { display: block; color: var(--muted); font-size: 14px; margin: 6px 0 0 22px; }
+footer{padding:56px 0 72px;text-align:center}
+footer h2{margin-bottom:22px}
+.dots::after{content:"...";display:inline-block;width:4.6ch;text-align:left;animation:dots 3.6s ease-in-out infinite}
+.contact{font-family:var(--mono);font-size:15px;display:flex;flex-direction:column;gap:8px;align-items:center}
+.contact a{color:var(--accent);text-decoration:none}
+.contact a:hover,.contact a:focus-visible{text-decoration:underline;text-underline-offset:4px}
+.contact .links{display:flex;gap:22px;flex-wrap:wrap;justify-content:center;font-size:14px}
 
-  .tree { list-style: none; margin: 0; padding: 0 24px 22px 46px; }
-  .tree li {
-    position: relative; padding: 3px 0 3px 26px; font-size: 14px; color: var(--text);
-  }
-  .tree li::before {
-    content: ""; position: absolute; left: 4px; top: 0; bottom: 0;
-    border-left: 1px solid var(--line-strong);
-  }
-  .tree li::after {
-    content: ""; position: absolute; left: 4px; top: 0.95em; width: 14px;
-    border-top: 1px solid var(--line-strong);
-  }
-  .tree li:last-child::before { bottom: auto; height: 0.95em; }
-  .tree .wip { color: var(--muted); }
-
-  /* Projetos */
-  .projects {
-    display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
-  }
-  .project {
-    border: 1px solid var(--line); border-radius: 6px; padding: 22px 24px;
-    background: var(--panel); height: 100%;
-    display: flex; flex-direction: column;
-  }
-  .ptitle { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
-  .ptitle::before { content: ">"; color: var(--accent); font-family: var(--mono); margin-right: 10px; }
-  .pdesc { color: var(--muted); font-size: 14px; margin: 0 0 14px 22px; }
-  .pmeta {
-    margin: auto 0 0 22px; padding-top: 10px;
-    border-top: 1px dashed var(--line-strong);
-    font-family: var(--mono); font-size: 12.5px; line-height: 1.5;
-    color: #6fb8a3;
-  }
-
-  .scale {
-    margin: 0 0 16px; padding: 10px 16px;
-    border: 1px dashed var(--line-strong); border-radius: 6px;
-    font-family: var(--mono); font-size: 13px; line-height: 1.5; color: #6fb8a3;
-  }
-  .scale .k { color: var(--muted); }
-
-  /* Contato */
-  footer { padding: 56px 0 72px; text-align: center; }
-  footer h2 { font-size: 14px; color: var(--muted); font-weight: 600; margin: 0 0 22px; font-family: var(--mono); }
-  footer h2::before { content: "> "; color: var(--accent); }
-  .dots::after { content: "..."; display: inline-block; width: 4.6ch; text-align: left; letter-spacing: 0; animation: dots 3.6s ease-in-out infinite; }
-  .contact { font-family: var(--mono); font-size: 15px; display: flex; flex-direction: column; gap: 8px; align-items: center; }
-  .contact a { color: var(--accent); text-decoration: none; }
-  .contact a:hover, .contact a:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
-  .contact .links { display: flex; gap: 22px; flex-wrap: wrap; justify-content: center; font-size: 14px; }
-
-
-  /* Animações de texto */
-  details[open] .tree li {
-    animation: itemIn 0.4s ease-out both;
-    animation-delay: calc(var(--i, 0) * 70ms);
-  }
-  .tree li:nth-child(1) { --i: 0; }
-  .tree li:nth-child(2) { --i: 1; }
-  .tree li:nth-child(3) { --i: 2; }
-  .tree li:nth-child(4) { --i: 3; }
-  .tree li:nth-child(5) { --i: 4; }
-  .tree li:nth-child(6) { --i: 5; }
-  .tree li:nth-child(7) { --i: 6; }
-  .tree li:nth-child(8) { --i: 7; }
-  .tt { display: inline-block; overflow: hidden; white-space: nowrap; vertical-align: bottom; }
-  .tt.pending { width: 0; }
-  .tt.play { animation: typeTitle 1.2s steps(var(--n)) both; }
-  @keyframes itemIn { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: none; } }
-  @keyframes typeTitle { from { width: 0; } to { width: calc(var(--n) * 1ch); } }
-  @keyframes typing { from { width: 0; } to { width: 38ch; } }
-  @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
-  @keyframes dots {
-    0%, 100% { letter-spacing: 0; }
-    50%      { letter-spacing: 0.5ch; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .typed, .cursor, .dots::after { animation: none; }
-    details[open] .tree li, .tt.play { animation: none; }
-    .hero::after { animation: none; display: none; }
-    .skill-name::before { transition: none; }
-  }
-
-  @media (max-width: 720px) {
-    .wrap { padding: 0 20px; }
-    header { flex-direction: column; align-items: flex-start; gap: 8px; padding: 12px 0; }
-    .hero { padding: 64px 0 52px; }
-    .hero h1 { font-size: 29px; }
-    .hero p { font-size: 16px; }
-    .projects { grid-template-columns: 1fr; grid-auto-rows: auto; }
-    details.skill summary { padding: 18px 18px; }
-    .tree { padding: 0 18px 20px 40px; }
-    .resume { margin-left: 22px; }
-  }
-  @media (max-width: 400px) {
-    .tag { font-size: 11px; }
-    nav { gap: 16px; }
-  }
+@keyframes typing{from{width:0}to{width:38ch}}
+@keyframes typeTitle{from{width:0}to{width:calc(var(--n)*1ch)}}
+@keyframes blink{0%,50%{opacity:1}51%,100%{opacity:0}}
+@keyframes act{0%,60%{opacity:1}61%,100%{opacity:.25}}
+@keyframes dim{0%,96%{opacity:1}97%,100%{opacity:.2}}
+@keyframes amb{0%,92%,99%,100%{background:var(--accent);box-shadow:0 0 0 2px rgba(61,220,110,.18),0 0 6px rgba(61,220,110,.55)}93%,98%{background:var(--amber);box-shadow:0 0 0 2px rgba(242,163,58,.2),0 0 6px rgba(242,163,58,.6)}}
+@keyframes dots{0%,100%{letter-spacing:0}50%{letter-spacing:.5ch}}
+@keyframes ping{from{left:0}to{left:calc(100% - 5px)}}
+@keyframes itemIn{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}header::after{display:none}}
+@media (max-width:720px){
+.wrap{padding:0 20px}
+header{flex-direction:column;align-items:flex-start;gap:8px;padding:12px 0}
+.hero{padding:64px 0 52px}
+.hero h1{font-size:29px}.hero p{font-size:16px}
+.projects{grid-template-columns:1fr}
+details.skill summary{padding:18px 26px}
+.tree{padding:0 24px 22px 42px}
+.project{padding:24px 26px}
+}
+@media (max-width:400px){.tag{font-size:11px}nav{gap:16px}}
 </style>
 </head>
 <body>
 <div class="wrap">
+<header>
+  <div class="name">Lucas Fabricio Morais</div>
+  <nav><a href="#sobre">Sobre</a><a href="#habilidades">Habilidades</a><a href="#projetos">Projetos</a><a href="#contato">Contato</a></nav>
+</header>
 
-  <header>
-    <div class="name">Lucas Fabricio Morais</div>
-    <nav>
-      <a href="#sobre">Sobre</a>
-      <a href="#habilidades">Habilidades</a>
-      <a href="#projetos">Projetos</a>
-      <a href="#contato">Contato</a>
-    </nav>
-  </header>
+<div class="hero" id="sobre">
+  <div class="tag"><span aria-hidden="true">&gt; </span><span class="typed">suporte de TI · infraestrutura · redes</span><span class="cursor" aria-hidden="true"></span></div>
+  <h1>Olá, sou Lucas Fabricio Morais.</h1>
+  <p>Atuo na área de TI, com experiência em suporte técnico, manutenção de computadores, redes e infraestrutura em ambientes corporativos.</p>
+</div>
 
-  <div class="hero" id="sobre">
-    <svg class="net net-d" viewBox="0 0 960 420" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
-      <g><line x1="36" y1="70" x2="90" y2="135"/><line x1="90" y1="135" x2="140" y2="190"/><line x1="90" y1="135" x2="45" y2="235"/><line x1="45" y1="235" x2="120" y2="300"/><line x1="140" y1="190" x2="120" y2="300"/><line x1="120" y1="300" x2="170" y2="390"/><line x1="920" y1="90" x2="870" y2="150"/><line x1="870" y1="150" x2="800" y2="60"/><line x1="870" y1="150" x2="910" y2="250"/><line x1="910" y1="250" x2="835" y2="320"/><line x1="910" y1="250" x2="895" y2="370"/><line x1="835" y1="320" x2="895" y2="370"/></g>
-      <g><circle class="node" cx="36" cy="70" r="3.5"/><circle class="node" cx="90" cy="135" r="3.5"/><circle class="node" cx="140" cy="190" r="3.5"/><circle class="node" cx="45" cy="235" r="3.5"/><circle class="node" cx="120" cy="300" r="3.5"/><circle class="node" cx="170" cy="390" r="3.5"/><circle class="node" cx="920" cy="90" r="3.5"/><circle class="node" cx="870" cy="150" r="3.5"/><circle class="node" cx="800" cy="60" r="3.5"/><circle class="node" cx="910" cy="250" r="3.5"/><circle class="node" cx="835" cy="320" r="3.5"/><circle class="node" cx="895" cy="370" r="3.5"/></g>
-    </svg>
-    <svg class="net net-s" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-      <g class="links"><polyline points="30,50 180,110 330,40 520,100 700,45 850,105 970,55"/><polyline points="40,940 200,880 360,950 540,890 720,945 880,885 965,935"/></g>
-      <g><line class="dot-o" x1="30" y1="50" x2="30" y2="50"/><line class="dot-i" x1="30" y1="50" x2="30" y2="50"/><line class="dot-o" x1="180" y1="110" x2="180" y2="110"/><line class="dot-i" x1="180" y1="110" x2="180" y2="110"/><line class="dot-o" x1="330" y1="40" x2="330" y2="40"/><line class="dot-i" x1="330" y1="40" x2="330" y2="40"/><line class="dot-o" x1="520" y1="100" x2="520" y2="100"/><line class="dot-i" x1="520" y1="100" x2="520" y2="100"/><line class="dot-o" x1="700" y1="45" x2="700" y2="45"/><line class="dot-i" x1="700" y1="45" x2="700" y2="45"/><line class="dot-o" x1="850" y1="105" x2="850" y2="105"/><line class="dot-i" x1="850" y1="105" x2="850" y2="105"/><line class="dot-o" x1="970" y1="55" x2="970" y2="55"/><line class="dot-i" x1="970" y1="55" x2="970" y2="55"/><line class="dot-o" x1="40" y1="940" x2="40" y2="940"/><line class="dot-i" x1="40" y1="940" x2="40" y2="940"/><line class="dot-o" x1="200" y1="880" x2="200" y2="880"/><line class="dot-i" x1="200" y1="880" x2="200" y2="880"/><line class="dot-o" x1="360" y1="950" x2="360" y2="950"/><line class="dot-i" x1="360" y1="950" x2="360" y2="950"/><line class="dot-o" x1="540" y1="890" x2="540" y2="890"/><line class="dot-i" x1="540" y1="890" x2="540" y2="890"/><line class="dot-o" x1="720" y1="945" x2="720" y2="945"/><line class="dot-i" x1="720" y1="945" x2="720" y2="945"/><line class="dot-o" x1="880" y1="885" x2="880" y2="885"/><line class="dot-i" x1="880" y1="885" x2="880" y2="885"/><line class="dot-o" x1="965" y1="935" x2="965" y2="935"/><line class="dot-i" x1="965" y1="935" x2="965" y2="935"/></g>
-    </svg>
-    <div class="tag"><span aria-hidden="true">&gt; </span><span class="typed">suporte de TI · infraestrutura · redes</span><span class="cursor" aria-hidden="true"></span></div>
-    <h1>Suporte de TI com foco em redes e infraestrutura corporativa.</h1>
-    <p>Experiência em atendimento a usuários, configuração e manutenção de redes e equipamentos em ambiente corporativo, do primeiro atendimento à identificação da causa.</p>
+<section id="habilidades">
+  <div class="section-head"><h2><span class="tt">Habilidades</span></h2><button type="button" class="toggle-all" id="toggleAll">expandir tudo</button></div>
+
+  <details class="skill" open>
+    <summary><span class="row"><span class="skill-name">Suporte técnico</span><span class="right"><span class="leds" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="state" aria-hidden="true"></span></span></span><span class="resume">Atendimento a usuários, diagnóstico de falhas e resolução de problemas de hardware, software e conectividade.</span></summary>
+    <ul class="tree">
+      <li>Atendimento a usuários e resolução de incidentes</li>
+      <li>Suporte remoto a usuários de diferentes unidades</li>
+      <li>Diagnóstico de problemas de hardware, software e rede</li>
+      <li>Montagem, manutenção e configuração de computadores e notebooks</li>
+      <li>Instalação e suporte de impressoras, monitores e outros periféricos</li>
+      <li>Administração de contas de e-mail, acessos, permissões e licenças</li>
+    </ul>
+  </details>
+
+  <details class="skill">
+    <summary><span class="row"><span class="skill-name">Redes e infraestrutura</span><span class="right"><span class="leds" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="state" aria-hidden="true"></span></span></span><span class="resume">Experiência prática na instalação, configuração e manutenção de redes e equipamentos de infraestrutura.</span></summary>
+    <ul class="tree">
+      <li>Montagem, organização e manutenção de racks</li>
+      <li>Cabeamento estruturado, incluindo testes, identificação, etiquetagem e documentação dos pontos de rede</li>
+      <li>Configuração de roteadores e switches</li>
+      <li>Configuração de redes Wi-Fi e access points</li>
+      <li>Instalação e organização de sistemas de CFTV</li>
+    </ul>
+  </details>
+
+  <details class="skill">
+    <summary><span class="row"><span class="skill-name">Sistemas</span><span class="right"><span class="leds" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="state" aria-hidden="true"></span></span></span><span class="resume">Conhecimento em sistemas operacionais e administração de usuários em ambientes corporativos.</span></summary>
+    <ul class="tree">
+      <li>Conhecimento e familiaridade em Windows 10/11 e Windows Server</li>
+      <li>Instalação, configuração e atualização de sistemas e aplicações</li>
+      <li>Administração de usuários e diretórios com Active Directory</li>
+      <li>Conhecimentos básicos em Linux</li>
+    </ul>
+  </details>
+</section>
+
+<section id="projetos">
+  <div class="section-head"><h2><span class="tt">Projetos e experiências</span></h2></div>
+  <div class="projects">
+    <div class="project"><div class="ptitle">Ampliação e novas unidades</div><p class="pdesc">Participação na implantação de TI em novas unidades e na ampliação de escritórios, abrangendo cabeamento estruturado, configuração da rede e preparação dos postos de trabalho para o início das operações.</p></div>
+    <div class="project"><div class="ptitle">Expansão de infraestrutura</div><p class="pdesc">Atuação na reestruturação e expansão da infraestrutura de TI, incluindo implementação de racks, instalação de equipamentos de rede e documentação de patch panels, switches e roteadores.</p></div>
+    <div class="project"><div class="ptitle">Atendimento e resolução de incidentes</div><p class="pdesc">Suporte técnico remoto e presencial a usuários de diversas unidades, atuando no diagnóstico de falhas, execução de testes e aplicação de correções. Prestação de orientação técnica adaptada ao nível de conhecimento de cada usuário, utilizando linguagem acessível, instruções claras e materiais de apoio.</p></div>
+    <div class="project"><div class="ptitle">Manutenção de sistemas e serviços</div><p class="pdesc">Apoio à manutenção dos ambientes de TI, incluindo atualização de sistemas, manutenção de equipamentos e acompanhamento de rotinas de backup, contribuindo para a continuidade dos serviços e das atividades das unidades.</p></div>
   </div>
+</section>
 
-  <section id="habilidades">
-    <div class="section-head">
-      <h2><span class="tt">Habilidades</span></h2>
-      <button type="button" class="toggle-all" id="toggleAll">expandir tudo</button>
-    </div>
-    <div class="skills">
-      <details class="skill" open>
-        <summary>
-          <span class="row"><span class="skill-name">Suporte técnico</span><span class="state" aria-hidden="true"></span></span>
-          <span class="resume">Atendimento e diagnóstico de problemas de hardware, software e conectividade.</span>
-        </summary>
-        <ul class="tree">
-          <li>Atendimento a usuários e resolução de incidentes</li>
-          <li>Orientação técnica adaptada ao nível de conhecimento do usuário, com instruções e materiais de apoio quando necessário</li>
-          <li>Suporte remoto a usuários de diferentes unidades</li>
-          <li>Diagnóstico de hardware, software e rede</li>
-          <li>Montagem, manutenção e configuração de computadores e notebooks</li>
-          <li>Instalação e suporte de impressoras, monitores e outros periféricos</li>
-          <li>Administração de contas, e-mail, acessos e licenças</li>
-        </ul>
-      </details>
-
-      <details class="skill">
-        <summary>
-          <span class="row"><span class="skill-name">Redes e infraestrutura</span><span class="state" aria-hidden="true"></span></span>
-          <span class="resume">Experiência e conhecimento em estrutura física e lógica da rede e conectividade.</span>
-        </summary>
-        <ul class="tree">
-          <li>Organização, montagem e manutenção de racks</li>
-          <li>Cabeamento estruturado, com aplicação de normas, teste, identificação e documentação dos pontos</li>
-          <li>Configuração de roteadores e switches</li>
-          <li>Configuração de redes Wi-Fi e access points</li>
-          <li>Instalação e organização de sistemas de CFTV</li>
-        </ul>
-      </details>
-
-      <details class="skill">
-        <summary>
-          <span class="row"><span class="skill-name">Sistemas</span><span class="state" aria-hidden="true"></span></span>
-          <span class="resume">Conhecimento em sistemas operacionais em ambiente corporativo, aplicações e equipamentos.</span>
-        </summary>
-        <ul class="tree">
-          <li>Windows 10/11</li>
-          <li>Instalação e configuração de sistemas e aplicações</li>
-          <li>Atualização e manutenção de sistemas</li>
-          <li class="wip">Linux (em desenvolvimento)</li>
-        </ul>
-      </details>
-
-      <details class="skill">
-        <summary>
-          <span class="row"><span class="skill-name">Servidores</span><span class="state" aria-hidden="true"></span></span>
-          <span class="resume">Servidores Windows, serviços de rede e rotinas de backup.</span>
-        </summary>
-        <ul class="tree">
-          <li>Windows Server e Active Directory</li>
-          <li>Instalação e configuração de servidores</li>
-          <li>Serviços de rede</li>
-          <li>Backup</li>
-        </ul>
-      </details>
-
-    </div>
-  </section>
-
-  <section id="projetos">
-    <div class="section-head"><h2><span class="tt">Projetos e experiências</span></h2></div>
-    <p class="scale"><span class="k">porte do ambiente:</span> 6 lojas · 10 a 15 computadores por loja · suporte remoto</p>
-    <div class="projects">
-      <div class="project">
-        <div class="ptitle">Ampliação e novas unidades</div>
-        <p class="pdesc">Participação na ampliação e reforma de escritórios, da estruturação inicial da TI ao preparo dos postos de trabalho.</p>
-        <p class="pmeta">4 novas lojas · 2 ampliações · cerca de 50 pontos de rede por loja</p>
-      </div>
-      <div class="project">
-        <div class="ptitle">Expansão de infraestrutura</div>
-        <p class="pdesc">Apoio na reestruturação e expansão de ambientes de TI: racks, equipamentos de rede, conectividade e estações de trabalho.</p>
-        <p class="pmeta">4 racks · patch panel, switches e MikroTik documentados</p>
-      </div>
-      <div class="project">
-        <div class="ptitle">Atendimento e resolução de incidentes</div>
-        <p class="pdesc">Suporte diário a usuários, com diagnóstico, testes e correção até a solução ou a identificação da causa.</p>
-      </div>
-      <div class="project">
-        <div class="ptitle">Manutenção de sistemas e serviços</div>
-        <p class="pdesc">Apoio na implantação, atualização, backup e manutenção de sistemas, equipamentos e serviços da operação.</p>
-      </div>
-    </div>
-  </section>
-
-  <footer id="contato">
-    <h2><span class="tt">Contato</span><span class="dots" aria-hidden="true"></span></h2>
-    <div class="contact">
-      <a href="mailto:contato@lucasmorais.com.br">contato@lucasmorais.com.br</a>
-      <div class="links">
-        <a href="https://www.linkedin.com/in/lucas-fabricio-morais/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://github.com/lucasf-morais" target="_blank" rel="noopener">GitHub</a>
-      </div>
-    </div>
-  </footer>
-
+<footer id="contato">
+  <h2><span class="tt">Contato</span><span class="dots" aria-hidden="true"></span></h2>
+  <div class="contact">
+    <a href="mailto:contato@lucasmorais.com.br">contato@lucasmorais.com.br</a>
+    <div class="links"><a href="https://www.linkedin.com/in/lucas-fabricio-morais/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/lucasf-morais" target="_blank" rel="noopener">GitHub</a></div>
+  </div>
+</footer>
 </div>
 
 <script>
-  (function () {
-    var btn = document.getElementById('toggleAll');
-    var items = Array.prototype.slice.call(document.querySelectorAll('details.skill'));
-    if (!items.length) return;
-
-    function allOpen() { return items.every(function (d) { return d.open; }); }
-    function sync() { if (btn) btn.textContent = allOpen() ? 'recolher tudo' : 'expandir tudo'; }
-
-    // Ao abrir uma área por clique (ou teclado), fecha as demais
-    items.forEach(function (d) {
-      d.querySelector('summary').addEventListener('click', function () {
-        if (!d.open) items.forEach(function (o) { if (o !== d) o.open = false; });
-      });
-      d.addEventListener('toggle', sync);
-    });
-
-    if (btn) {
-      btn.style.display = 'inline-block';
-      btn.addEventListener('click', function () {
-        var open = !allOpen();
-        items.forEach(function (d) { d.open = open; });
-        sync();
-      });
-      sync();
-    }
-  })();
-
-  // Títulos das seções digitados quando aparecem na tela
-  (function () {
-    var titles = document.querySelectorAll('.tt');
-    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!titles.length || reduce || !('IntersectionObserver' in window)) return;
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        e.target.classList.remove('pending');
-        e.target.classList.add('play');
-        io.unobserve(e.target);
-      });
-    }, { threshold: 0.6 });
-    Array.prototype.forEach.call(titles, function (t) {
-      t.style.setProperty('--n', t.textContent.length);
-      t.classList.add('pending');
-      io.observe(t);
-    });
-  })();
-
-
-  // Menu: seção atual (ou a que foi clicada) fica verde
-  (function () {
-    var links = Array.prototype.slice.call(document.querySelectorAll('nav a[href^="#"]'));
-    var secs = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
-    var lock = false, lockTimer, ticking = false;
-    function set(i) {
-      links.forEach(function (a, j) {
-        a.classList.toggle('active', i === j);
-        if (i === j) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
-      });
-    }
-    function update() {
-      if (lock) return;
-      var idx = 0, line = window.innerHeight * 0.35;
-      secs.forEach(function (sec, i) { if (sec && sec.getBoundingClientRect().top <= line) idx = i; });
-      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) idx = secs.length - 1;
-      set(idx);
-    }
-    links.forEach(function (a, i) {
-      a.addEventListener('click', function () {
-        set(i); lock = true; clearTimeout(lockTimer);
-        lockTimer = setTimeout(function () { lock = false; update(); }, 900);
-      });
-    });
-    window.addEventListener('scroll', function () {
-      if (ticking) return; ticking = true;
-      requestAnimationFrame(function () { ticking = false; update(); });
-    }, { passive: true });
-    window.addEventListener('resize', update);
-    update();
-  })();
+(function(){
+  var btn=document.getElementById('toggleAll'),items=[].slice.call(document.querySelectorAll('details.skill'));
+  function allOpen(){return items.every(function(d){return d.open})}
+  function sync(){btn.textContent=allOpen()?'recolher tudo':'expandir tudo'}
+  items.forEach(function(d){
+    d.querySelector('summary').addEventListener('click',function(){if(!d.open)items.forEach(function(o){if(o!==d)o.open=false})});
+    d.addEventListener('toggle',sync);
+  });
+  btn.style.display='inline-block';
+  btn.addEventListener('click',function(){var o=!allOpen();items.forEach(function(d){d.open=o});sync()});
+  sync();
+})();
+(function(){
+  var t=document.querySelectorAll('.tt');
+  if(!t.length||!('IntersectionObserver' in window)||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;e.target.classList.remove('pending');e.target.classList.add('play');io.unobserve(e.target)})},{threshold:.6});
+  [].forEach.call(t,function(el){el.style.setProperty('--n',el.textContent.length);el.classList.add('pending');io.observe(el)});
+})();
+(function(){
+  var ids=['sobre','habilidades','projetos','contato'],secs=ids.map(function(i){return document.getElementById(i)}),links=[].slice.call(document.querySelectorAll('nav a[href^="#"]')),lock=false,lt,tick=false;
+  function set(id){links.forEach(function(a){var on=a.getAttribute('href')==='#'+id;a.classList.toggle('active',on);if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')})}
+  function update(){
+    if(lock)return;
+    var idx=0,line=innerHeight*.35;
+    secs.forEach(function(s,i){if(s&&s.getBoundingClientRect().top<=line)idx=i});
+    if(innerHeight+scrollY>=document.documentElement.scrollHeight-4)idx=secs.length-1;
+    set(ids[idx]);
+  }
+  links.forEach(function(a){a.addEventListener('click',function(){set(a.getAttribute('href').slice(1));lock=true;clearTimeout(lt);lt=setTimeout(function(){lock=false;update()},900)})});
+  addEventListener('scroll',function(){if(tick)return;tick=true;requestAnimationFrame(function(){tick=false;update()})},{passive:true});
+  addEventListener('resize',update);update();
+})();
 </script>
 </body>
 </html>
